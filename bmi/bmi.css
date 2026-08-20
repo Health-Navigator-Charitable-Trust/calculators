@@ -3,6 +3,9 @@
 
 .heal-calc { max-width: 340px; }
 
+.heal-calc .heal-row { display: flex; gap: 8px; }
+.heal-calc .heal-row .heal-field { flex: 1; min-width: 0; }
+
 .heal-calc .heal-result { padding: 12px; }
 .heal-calc .heal-bmi-value {
   font-size: 26px;

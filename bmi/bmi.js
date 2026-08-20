@@ -10,12 +10,14 @@ window.healRenderBMI = function (container) {
         '<button type="button" data-unit="metric" aria-pressed="true">Metric</button>' +
         '<button type="button" data-unit="imperial" aria-pressed="false">Imperial</button>' +
       '</div>' +
-      '<div class="heal-field"><label>Height <span class="heal-u">(<span class="heal-h-unit">cm</span>)</span>' +
-        '<input class="heal-height" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 175">' +
-      '</label></div>' +
-      '<div class="heal-field"><label>Weight <span class="heal-u">(<span class="heal-w-unit">kg</span>)</span>' +
-        '<input class="heal-weight" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 70">' +
-      '</label></div>' +
+      '<div class="heal-row">' +
+        '<div class="heal-field"><label>Height <span class="heal-u">(<span class="heal-h-unit">cm</span>)</span>' +
+          '<input class="heal-height" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 175">' +
+        '</label></div>' +
+        '<div class="heal-field"><label>Weight <span class="heal-u">(<span class="heal-w-unit">kg</span>)</span>' +
+          '<input class="heal-weight" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 70">' +
+        '</label></div>' +
+      '</div>' +
       '<div class="heal-result"><span class="heal-placeholder">Enter height and weight</span></div>' +
     '</div>';
 
