@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL Pregnancy Calculator</title>
+  <meta name="description" content="Pregnancy due date calculator - LMP, ultrasound, conception, blastocyst transfer and gestation modes.">
+  <link rel="stylesheet" href="pregnancy.css">
+</head>
+<body>
+  <main id="heal-root" aria-label="Pregnancy calculator"></main>
+
+  <script src="../allowed-domains.js"></script>
+  <script src="../shared/embed-guard.js"></script>
+  <script src="pregnancy.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("heal-root");
+      var verdict = window.healEmbedGuard.checkIframe();
+      if (verdict.allowed) {
+        window.healRenderPregnancy(root);
+      } else {
+        root.innerHTML =
+          '<p style="font-family:system-ui,sans-serif;color:#888;padding:12px;">' +
+          "This calculator is not available on this site.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

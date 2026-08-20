@@ -1,0 +1,59 @@
+/* HEAL Pregnancy calculator - specific styles on top of the shared definition. */
+@import url("../shared/heal.css");
+
+.heal-calc { max-width: 480px; }
+
+.heal-calc .heal-row { display: flex; gap: 8px; }
+.heal-calc .heal-row .heal-field { flex: 1; min-width: 0; }
+
+/* ---- Result rows ---- */
+.heal-calc .heal-preg-results {
+  margin-top: 11px;
+  border: 1px solid var(--heal-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.heal-calc .heal-preg-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 13px;
+}
+.heal-calc .heal-preg-row + .heal-preg-row { border-top: 1px solid var(--heal-line); }
+.heal-calc .heal-preg-lbl { font-size: .8rem; color: var(--heal-muted); }
+.heal-calc .heal-preg-val { font-size: .95rem; font-weight: 700; text-align: right; }
+
+/* ---- Progress bar ---- */
+.heal-calc .heal-progress { margin-top: 11px; }
+.heal-calc .heal-progress-text { font-size: .8rem; font-weight: 600; margin-bottom: 5px; }
+.heal-calc .heal-progress-track {
+  height: 10px;
+  background: var(--heal-page);
+  border: 1px solid var(--heal-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.heal-calc .heal-progress-fill { height: 100%; width: 0; background: var(--heal-accent); }
+.heal-calc .heal-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: .68rem;
+  color: var(--heal-muted);
+}
+
+/* ---- Screening dates ---- */
+.heal-calc .heal-screen { margin-top: 11px; }
+.heal-calc .heal-screen-title { font-size: .85rem; font-weight: 700; margin: 0 0 4px; }
+.heal-calc .heal-screen-item {
+  padding: 7px 10px;
+  border-top: 1px solid var(--heal-line);
+  font-size: .78rem;
+  line-height: 1.4;
+}
+.heal-calc .heal-screen-item--due { background: #fdf0e5; }
+.heal-calc .heal-screen-name { font-weight: 700; }
+.heal-calc .heal-screen-desc { color: var(--heal-muted); }
+.heal-calc .heal-screen-dates { font-weight: 600; }
+.heal-calc .heal-screen-note { font-size: .72rem; color: var(--heal-muted); margin-top: 6px; }

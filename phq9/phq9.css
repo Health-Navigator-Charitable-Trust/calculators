@@ -1,42 +1,70 @@
-/* HEAL PHQ-9 questionnaire - specific styles on top of the shared definition. */
+/* HEAL PHQ-9 questionnaire (wizard) - specific styles on top of the shared definition. */
 @import url("../shared/heal.css");
 
 .heal-calc { max-width: 520px; }
 
-/* ---- Questions ---- */
-.heal-calc .heal-q {
-  margin: 0 0 8px;
-  padding: 10px 12px;
-  border: 1px solid var(--heal-line);
-  border-radius: var(--heal-radius-inner);
-}
-.heal-calc .heal-q legend {
-  padding: 0;
-  font-size: .85rem;
+/* ---- Wizard progress ---- */
+.heal-calc .heal-wiz-progress { margin-bottom: 12px; }
+.heal-calc .heal-wiz-count {
+  display: block;
+  margin-bottom: 5px;
+  font-size: .74rem;
   font-weight: 600;
-  line-height: 1.35;
+  color: var(--heal-muted);
 }
-.heal-calc .heal-q .heal-opts { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
-.heal-calc .heal-q .heal-opts label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  padding: 5px 8px;
-  border-radius: 6px;
-  font-size: .82rem;
-  font-weight: 400;
+.heal-calc .heal-wiz-track {
+  height: 6px;
+  background: var(--heal-page);
+  border: 1px solid var(--heal-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.heal-calc .heal-wiz-fill { height: 100%; width: 0; background: var(--heal-accent); transition: width .25s ease; }
+
+/* ---- Question + options (one per line, full width) ---- */
+.heal-calc .heal-wiz-q {
+  margin-bottom: 4px;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.heal-calc .heal-opt {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--heal-line);
+  border-radius: var(--heal-radius-inner);
+  background: var(--heal-card);
+  font: inherit;
+  font-size: .86rem;
+  text-align: left;
   cursor: pointer;
 }
-.heal-calc .heal-q .heal-opts label:hover { background: var(--heal-page); }
-.heal-calc .heal-q input[type="radio"] { accent-color: var(--heal-accent); width: 16px; height: 16px; margin: 0; }
-.heal-calc .heal-q--missing { border-color: var(--heal-warn-line); background: var(--heal-warn-bg); }
+.heal-calc .heal-opt:hover { border-color: var(--heal-accent); }
+.heal-calc .heal-opt[aria-pressed="true"] {
+  border-color: var(--heal-accent);
+  background: #fdf0e5;
+  font-weight: 600;
+}
 
-.heal-calc .heal-error {
-  margin: 9px 0 0;
+/* ---- Wizard nav ---- */
+.heal-calc .heal-wiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+.heal-calc .heal-nav-btn {
+  padding: 6px 4px;
+  border: 0;
+  background: none;
+  font: inherit;
   font-size: .82rem;
   font-weight: 600;
-  color: var(--heal-warn-ink);
+  color: var(--heal-link);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* ---- Result ---- */
@@ -60,8 +88,9 @@
   line-height: 1.45;
 }
 
+/* ---- Support (always visible) ---- */
 .heal-calc .heal-support {
-  margin: 11px 0 0;
+  margin: 12px 0 0;
   padding: 10px 13px;
   border: 1px solid var(--heal-line);
   border-radius: var(--heal-radius-inner);
@@ -69,4 +98,4 @@
   line-height: 1.45;
 }
 .heal-calc .heal-support strong { display: block; margin-bottom: 4px; }
-.heal-calc .heal-support ul { margin: 0; padding-left: 18px; }
+.heal-calc .heal-support ul { margin: 0 0 6px; padding-left: 18px; }

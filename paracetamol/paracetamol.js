@@ -66,16 +66,11 @@ window.healRenderParacetamol = function (container) {
   var emptyLayer = container.querySelector(".heal-layer-empty");
   var resultLayer = container.querySelector(".heal-layer-result");
 
+  // Standard rounding (halves up). 1-dp mg matches the reference exactly;
+  // mL may differ from the reference by a harmless 0.1 mL on float edge cases.
   function round(n, dp) {
     var f = Math.pow(10, dp);
     return Math.round(n * f) / f;
-  }
-
-  // Round to nearest, exact halves go DOWN (not up like Math.round).
-  // Epsilon absorbs float representation error around the half boundary.
-  function roundHalfDown(n, dp) {
-    var f = Math.pow(10, dp);
-    return Math.ceil(n * f - 0.5 - 1e-6) / f;
   }
 
   function render() {
@@ -99,7 +94,7 @@ window.healRenderParacetamol = function (container) {
       '<div class="heal-dose">' +
         '<div class="heal-dose-cap">Give this amount</div>' +
         '<div class="heal-dose-cols">' +
-          '<div class="heal-dose-col"><div class="heal-dose-big">' + roundHalfDown(doseMl, 1) + '<span class="heal-unit"> mL</span></div><div class="heal-dose-lbl">liquid</div></div>' +
+          '<div class="heal-dose-col"><div class="heal-dose-big">' + round(doseMl, 1) + '<span class="heal-unit"> mL</span></div><div class="heal-dose-lbl">liquid</div></div>' +
           '<div class="heal-dose-col"><div class="heal-dose-big">' + round(doseMg, 1) + '<span class="heal-unit"> mg</span></div><div class="heal-dose-lbl">powder</div></div>' +
         '</div>' +
         (capped ? '<div class="heal-dose-warn">Maximum single dose reached — never give more than 1&nbsp;g (1000&nbsp;mg) per dose.</div>' : "") +

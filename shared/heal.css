@@ -84,6 +84,7 @@
 .heal-calc label .heal-u { font-weight: 400; color: var(--heal-muted); }
 .heal-calc input[type="number"],
 .heal-calc input[type="text"],
+.heal-calc input[type="date"],
 .heal-calc select {
   width: 100%;
   min-height: 44px;
@@ -136,6 +137,14 @@
   background: var(--heal-page);
   min-height: 64px;
   text-align: center;
+}
+
+/* ---- Error message ---- */
+.heal-calc .heal-error {
+  margin: 9px 0 0;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--heal-warn-ink);
 }
 
 /* ---- Buttons ---- */
