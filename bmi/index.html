@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL BMI Calculator</title>
+  <link rel="stylesheet" href="bmi.css">
+</head>
+<body>
+  <div id="heal-root"></div>
+
+  <script src="../allowed-domains.js"></script>
+  <script src="../shared/embed-guard.js"></script>
+  <script src="bmi.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("heal-root");
+      var verdict = window.healEmbedGuard.checkIframe();
+      if (verdict.allowed) {
+        window.healRenderBMI(root);
+      } else {
+        root.innerHTML =
+          '<p style="font-family:system-ui,sans-serif;color:#888;padding:12px;">' +
+          "This calculator is not available on this site.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

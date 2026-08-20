@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL Calculators - Embedding Guide</title>
+  <style>
+    body {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      color: #1a1a1a;
+    }
+    h1 { font-size: 26px; }
+    h2 { font-size: 19px; margin-top: 36px; }
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #f6f8fa;
+      border: 1px solid #e2e2e2;
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 13.5px;
+    }
+    table { border-collapse: collapse; }
+    td, th { border: 1px solid #ddd; padding: 6px 12px; text-align: left; }
+    .note {
+      background: #fff8e6;
+      border: 1px solid #f0dfa0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>HEAL Calculators</h1>
+  <p>Embeddable calculators hosted on GitHub Pages. Two ways to include them on your site. In both cases the domain of the including page must be on the allowlist (see below).</p>
+
+  <h2>Available calculators</h2>
+  <table>
+    <tr><th>Calculator</th><th>Path</th></tr>
+    <tr><td>BMI</td><td><code>bmi/</code></td></tr>
+  </table>
+
+  <h2>Option 1 - iframe (recommended)</h2>
+  <p>Simplest option. Fully isolated from your page's CSS and scripts.</p>
+  <pre>&lt;iframe
+  src="https://&lt;user&gt;.github.io/&lt;repo&gt;/bmi/"
+  width="380"
+  height="420"
+  style="border:0"
+  title="BMI Calculator"
+  loading="lazy"&gt;
+&lt;/iframe&gt;</pre>
+
+  <h2>Option 2 - script tag</h2>
+  <p>The calculator renders directly inside your page (in a shadow root, so styles stay isolated).</p>
+  <pre>&lt;div data-heal-calculator="bmi"&gt;&lt;/div&gt;
+&lt;script src="https://&lt;user&gt;.github.io/&lt;repo&gt;/bmi/embed.js"&gt;&lt;/script&gt;</pre>
+  <p>Place the <code>&lt;div&gt;</code> where the calculator should appear. The script can go anywhere in the page; it waits for the DOM to be ready.</p>
+
+  <h2>Controlling which sites may embed</h2>
+  <p>All calculators share one allowlist: <code>allowed-domains.js</code> at the root of this repository. Edit it once and it applies to every calculator and both embed methods.</p>
+  <pre>window.HEAL_ALLOWED_DOMAINS = [
+  "example.com",       // exact domain
+  "*.example.org",     // example.org + all subdomains
+];</pre>
+  <ul>
+    <li>Not on the list &rarr; the calculator shows "not available on this site" instead.</li>
+    <li>Opening the calculator URL directly (not embedded) always works.</li>
+    <li><code>localhost</code> is on the list by default for local testing.</li>
+  </ul>
+  <p class="note"><strong>Limitation:</strong> GitHub Pages is static hosting, so this check runs in the visitor's browser. It reliably blocks unwanted embedding of the hosted files, but it cannot stop someone from copying the files and re-hosting them without the check.</p>
+
+  <h2>Demo</h2>
+  <p><a href="bmi/">Open the BMI calculator</a></p>
+</body>
+</html>
