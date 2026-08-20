@@ -37,6 +37,8 @@ window.healRenderParacetamol = function (container) {
         'Call <a href="tel:0800611116">Healthline 0800&nbsp;611&nbsp;116</a>. Emergency&nbsp;111.' +
       '</p>' +
 
+      '<p class="heal-footer">Brought to you by <a href="https://healthify.nz" target="_blank" rel="noopener">Healthify</a></p>' +
+
       '<dialog class="heal-advice" aria-labelledby="heal-p-advice-title">' +
         '<div class="heal-m-head">' +
           '<h2 id="heal-p-advice-title">General dosing advice</h2>' +

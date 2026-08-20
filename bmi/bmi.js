@@ -19,6 +19,7 @@ window.healRenderBMI = function (container) {
         '</label></div>' +
       '</div>' +
       '<div class="heal-result"><span class="heal-placeholder">Enter height and weight</span></div>' +
+      '<p class="heal-footer">Brought to you by <a href="https://healthify.nz" target="_blank" rel="noopener">Healthify</a></p>' +
     '</div>';
 
   var unit = "metric";

@@ -61,7 +61,7 @@
 
 /* ---- Typography ---- */
 .heal-calc .heal-title {
-  margin: 0;
+  margin: 0 0 8px;
   font-size: 1.02rem;
   line-height: 1.2;
   font-weight: 600;
@@ -135,6 +135,16 @@
   border-radius: 10px;
   background: var(--heal-page);
   min-height: 64px;
+  text-align: center;
+}
+
+/* ---- Footer ("Brought to you by ...") ---- */
+.heal-calc .heal-footer {
+  margin: 12px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--heal-line);
+  font-size: .72rem;
+  color: var(--heal-muted);
   text-align: center;
 }
 
