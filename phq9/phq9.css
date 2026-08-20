@@ -22,11 +22,26 @@
 .heal-calc .heal-wiz-fill { height: 100%; width: 0; background: var(--heal-accent); transition: width .25s ease; }
 
 /* ---- Question + options (one per line, full width) ---- */
+@keyframes heal-q-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes heal-opts-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
 .heal-calc .heal-wiz-q {
   margin-bottom: 4px;
   font-size: .95rem;
   font-weight: 600;
   line-height: 1.4;
+  animation: heal-q-in .2s ease;
+}
+/* Options appear .25s after the question to draw the eye to the question first */
+.heal-calc .heal-wiz-opts { animation: heal-opts-in .25s ease .25s backwards; }
+@media (prefers-reduced-motion: reduce) {
+  .heal-calc .heal-wiz-q,
+  .heal-calc .heal-wiz-opts { animation: none; }
 }
 .heal-calc .heal-opt {
   display: block;

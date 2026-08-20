@@ -96,12 +96,12 @@ window.healRenderPHQ9 = function (container) {
 
   function renderQuestion() {
     var step = STEPS[current];
-    var h = '<div class="heal-wiz-q">' + (current + 1) + ". " + step.text + "</div>";
+    var h = '<div class="heal-wiz-q">' + (current + 1) + ". " + step.text + '</div><div class="heal-wiz-opts">';
     for (var v = 0; v < step.opts.length; v++) {
       h += '<button type="button" class="heal-opt" data-value="' + v + '" aria-pressed="' +
         (answers[current] === v) + '">' + step.opts[v] + "</button>";
     }
-    bodyEl.innerHTML = h;
+    bodyEl.innerHTML = h + "</div>";
     setProgress("Question " + (current + 1) + " of " + TOTAL, answeredCount() / TOTAL);
     backBtn.hidden = current === 0;
 

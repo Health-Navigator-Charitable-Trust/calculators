@@ -12,12 +12,12 @@ window.healRenderPregnancy = function (container) {
   // NZ antenatal screening schedule (from the reference calculator).
   // prefix "from" -> earliest date; prefix "by" -> latest date; range -> both.
   var SCREENING = [
-    { name: "Folic acid supplementation", desc: "Ideally from at least 4 weeks before conception until 12 weeks gestation", prefix: "from", start: { w: -4, d: 0 }, end: { w: 12, d: 0 } },
+    { name: "Folic acid supplementation", desc: "Ideally from at least 4 weeks before conception until 12 weeks pregnant", prefix: "from", start: { w: -4, d: 0 }, end: { w: 12, d: 0 } },
     { name: "Iodine supplementation", desc: "During whole pregnancy and breastfeeding", prefix: "from", single: { w: 0, d: 0 } },
-    { name: "Flu vaccination", desc: "At any gestation", prefix: "from", start: { w: 0, d: 0 }, end: { w: 40, d: 0 } },
+    { name: "Flu vaccination", desc: "Any time during pregnancy", prefix: "from", start: { w: 0, d: 0 }, end: { w: 40, d: 0 } },
     { name: "First antenatal blood, urine and STI test", desc: "Ideally by 9 weeks", prefix: "by", single: { w: 9, d: 0 } },
     { name: "NIPT (non-invasive prenatal testing)", desc: "From 10 weeks onwards as an optional non-funded test", prefix: "from", single: { w: 10, d: 0 } },
-    { name: "Register with an LMC", desc: "By 12 weeks at the latest", prefix: "by", single: { w: 12, d: 0 } },
+    { name: "Register with your midwife (LMC)", desc: "By 12 weeks at the latest", prefix: "by", single: { w: 12, d: 0 } },
     { name: "Nuchal translucency scan (MSS1 - scan)", desc: "Between 11 weeks 2 days and 13 weeks 6 days", prefix: "from", start: { w: 11, d: 2 }, end: { w: 13, d: 6 } },
     { name: "First trimester combined screening (MSS1 - blood)", desc: "Available between 9 weeks and 13 weeks 6 days", prefix: "from", start: { w: 9, d: 0 }, end: { w: 13, d: 6 } },
     { name: "Blood pressure and urine dipstick tests", desc: "At all antenatal visits after initial antenatal test", prefix: "from", single: { w: 12, d: 0 } },
@@ -60,20 +60,20 @@ window.healRenderPregnancy = function (container) {
   container.innerHTML =
     '<div class="heal-calc">' +
       '<div class="heal-head"><h2 class="heal-title">Pregnancy calculator</h2></div>' +
-      '<p class="heal-sub">Due date and gestation · LMP + 280 days method</p>' +
+      '<p class="heal-sub">Work out your due date and how far along you are (your \u201cgestation\u201d).</p>' +
 
       '<form novalidate>' +
         '<div class="heal-field">' +
           '<label for="heal-pg-mode">Calculate from</label>' +
           '<select id="heal-pg-mode">' +
-            '<option value="lmp">Last menstrual period (LMP)</option>' +
-            '<option value="uss">Ultrasound due date</option>' +
-            '<option value="gestation">Current gestation (weeks + days)</option>' +
+            '<option value="lmp">First day of last period (LMP)</option>' +
+            '<option value="uss">Due date from ultrasound scan</option>' +
+            '<option value="gestation">How far along you are now (weeks + days)</option>' +
             '<option value="conception">Date of conception</option>' +
             '<option value="day3">Day 3 blastocyst transfer</option>' +
             '<option value="day5">Day 5 blastocyst transfer</option>' +
-            '<option value="customdate">Gestation at a future or past date</option>' +
-            '<option value="customgestation">Date at a future or past gestation</option>' +
+            '<option value="customdate">How far along on a future or past date</option>' +
+            '<option value="customgestation">Date when a certain number of weeks is reached</option>' +
           '</select>' +
         '</div>' +
         '<div class="heal-field" data-panel="lmp uss conception day3 day5 customdate">' +
@@ -91,7 +91,7 @@ window.healRenderPregnancy = function (container) {
       '</form>' +
 
       '<p class="heal-disc" data-panel="customdate customgestation" hidden>' +
-        'Uses the current gestation from your last calculation: <strong class="heal-pg-current">not calculated yet — use another mode first</strong>.' +
+        'Uses how far along you are from your last calculation: <strong class="heal-pg-current">not calculated yet — use another option above first</strong>.' +
       '</p>' +
 
       '<p class="heal-error" hidden></p>' +
@@ -106,7 +106,7 @@ window.healRenderPregnancy = function (container) {
       '<div class="heal-screen" hidden>' +
         '<h3 class="heal-screen-title">Important dates</h3>' +
         '<div class="heal-screen-list"></div>' +
-        '<p class="heal-screen-note">Highlighted = due at your current gestation.</p>' +
+        '<p class="heal-screen-note">Highlighted = due at how far along you are now.</p>' +
       '</div>' +
 
       '<p class="heal-disc">General guide only — your LMC or ultrasound dating takes precedence.</p>' +
@@ -114,12 +114,12 @@ window.healRenderPregnancy = function (container) {
     '</div>';
 
   var DATE_LABELS = {
-    lmp: "First day of last menstrual period",
-    uss: "Due date from ultrasound",
+    lmp: "First day of your last period",
+    uss: "Due date from your ultrasound scan",
     conception: "Date of conception",
     day3: "Day 3 blastocyst transfer date",
     day5: "Day 5 blastocyst transfer date",
-    customdate: "Future or past date",
+    customdate: "Choose a future or past date",
   };
 
   var modeEl = container.querySelector("#heal-pg-mode");
@@ -194,7 +194,7 @@ window.healRenderPregnancy = function (container) {
   function applyResult(rows, gestDays, edd) {
     setRows(rows);
     currentGestDays = gestDays;
-    currentEl.textContent = gestDays !== null ? gestText(gestDays) : "not calculated yet — use another mode first";
+    currentEl.textContent = gestDays !== null ? gestText(gestDays) : "not calculated yet — use another option above first";
     updateProgress(gestDays);
     if (edd) {
       updateScreening(edd, gestDays);
@@ -219,19 +219,19 @@ window.healRenderPregnancy = function (container) {
     // Custom modes need a prior calculation
     if (m === "customdate" || m === "customgestation") {
       if (currentGestDays === null) {
-        showError("Do another calculation method first to get current gestation");
+        showError("Use another calculation first so we know how far along you are");
         return;
       }
       if (m === "customdate") {
         var cd = parseDate(dateEl.value);
         if (!cd) { showError("Enter a valid date"); return; }
         var at = currentGestDays + diffDays(cd, today());
-        applyResult([["Gestation on " + fmt(cd), gestText(at)]], currentGestDays, null);
+        applyResult([["How far along on " + fmt(cd), gestText(at)]], currentGestDays, null);
         return;
       }
       // customgestation
       var tw = parseInt(weeksEl.value, 10);
-      if (isNaN(tw) || tw < 0 || tw > 42) { showError("Enter a valid gestation in weeks (0-42)."); return; }
+      if (isNaN(tw) || tw < 0 || tw > 42) { showError("Enter how many weeks (0-42)."); return; }
       var target = today();
       applyResult([["Date at " + plural(tw, "week"), fmt(addDays(target, tw * 7 - currentGestDays))]], currentGestDays, null);
       return;
@@ -245,7 +245,7 @@ window.healRenderPregnancy = function (container) {
       var g = w * 7 + d;
       var lmpG = addDays(today(), -g);
       var eddG = addDays(lmpG, 280);
-      applyResult([["Last menstrual period", fmt(lmpG)], ["Estimated due date", fmt(eddG)]], g, eddG);
+      applyResult([["Last period started", fmt(lmpG)], ["Estimated due date", fmt(eddG)]], g, eddG);
       return;
     }
 
@@ -260,26 +260,26 @@ window.healRenderPregnancy = function (container) {
       if (gest > 280) { showError("Date too far back"); return; }
       if (gest < 0) { showError("Period must be before today"); return; }
       edd = addDays(input, 280);
-      applyResult([["Current gestation", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
+      applyResult([["How far along today", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
     } else if (m === "uss") {
       lmp = addDays(input, -280);
       gest = diffDays(now, lmp);
       if (gest < 0) { showError("Can't be under 0 weeks pregnant"); return; }
       if (gest > 43 * 7) { showError("Can't be over 43 weeks pregnant"); return; }
-      applyResult([["Current gestation", gestText(gest)], ["Estimated LMP", fmt(lmp)]], gest, input);
+      applyResult([["How far along today", gestText(gest)], ["Estimated last period (LMP)", fmt(lmp)]], gest, input);
     } else if (m === "conception") {
       edd = addDays(input, 266);
       gest = diffDays(now, input) + 14;
       if (gest > 280) { showError("Date is too far back"); return; }
       if (gest < 14) { showError("Must be before today"); return; }
-      applyResult([["Current gestation", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
+      applyResult([["How far along today", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
     } else if (m === "day3" || m === "day5") {
       var embryoAge = m === "day3" ? 3 : 5;
       lmp = addDays(input, -(14 + embryoAge));
       edd = addDays(lmp, 280);
       gest = diffDays(now, lmp);
-      if (gest < 0 || gest > 280) { showError("Calculated gestational age is out of range"); return; }
-      applyResult([["Last menstrual period", fmt(lmp)], ["Current gestation", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
+      if (gest < 0 || gest > 280) { showError("Calculated weeks pregnant is out of range"); return; }
+      applyResult([["Last period started", fmt(lmp)], ["How far along today", gestText(gest)], ["Estimated due date", fmt(edd)]], gest, edd);
     }
   }
 
