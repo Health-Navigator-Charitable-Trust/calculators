@@ -9,6 +9,8 @@
 window.HEAL_ALLOWED_DOMAINS = [
   "localhost",
   "127.0.0.1",
+  "*.healthify.nz",
+  "healthify.nz",
   // "example.com",
   // "*.example.org",
 ];

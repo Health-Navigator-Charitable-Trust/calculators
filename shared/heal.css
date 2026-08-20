@@ -1,0 +1,152 @@
+/* ============================================================
+   HEAL Calculators - shared style definition.
+   Every calculator links/imports this file and scopes its own
+   rules under .heal-calc. Override the custom properties per
+   calculator (in its own css) to change the accent etc.
+
+   Requires: nothing. Watermark uses logo.svg next to this file.
+   ============================================================ */
+
+/* ---- Design tokens ---- */
+.heal-calc {
+  --heal-accent: #E8590C;        /* brand orange (from logo) */
+  --heal-accent-deep: #B34405;
+  --heal-link: #C74A08;
+  --heal-ink: #14110F;
+  --heal-muted: #5b5650;
+  --heal-line: #e2ddd6;
+  --heal-page: #f2efea;
+  --heal-card: #ffffff;
+  --heal-warn-bg: #fff4e8;
+  --heal-warn-line: #e6b483;
+  --heal-warn-ink: #8a3f0a;
+  --heal-focus: #1257a8;
+  --heal-radius: 14px;
+  --heal-radius-inner: 9px;
+  --heal-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Card (outermost element of every calculator) ---- */
+.heal-calc {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 430px;
+  padding: 14px;
+  border: 1px solid var(--heal-line);
+  border-radius: var(--heal-radius);
+  background: var(--heal-card);
+  box-shadow: 0 1px 3px rgba(20, 17, 15, .06);
+  font-family: var(--heal-font);
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--heal-ink);
+}
+.heal-calc *, .heal-calc *::before, .heal-calc *::after { box-sizing: inherit; }
+
+/* ---- Brand watermark (decorative, top-right corner) ---- */
+.heal-calc::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: 150px;
+  height: 150px;
+  background: url("logo.svg") center / contain no-repeat;
+  opacity: .07;
+  pointer-events: none;
+}
+.heal-calc > * { position: relative; } /* keep content above watermark */
+
+/* ---- Typography ---- */
+.heal-calc .heal-title {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.heal-calc .heal-sub {
+  margin: 2px 0 11px;
+  font-size: .78rem;
+  color: var(--heal-muted);
+}
+
+/* ---- Form elements ---- */
+.heal-calc .heal-field { margin-bottom: 9px; }
+.heal-calc label {
+  display: block;
+  margin: 0 0 4px;
+  font-size: .83rem;
+  font-weight: 600;
+}
+.heal-calc label .heal-u { font-weight: 400; color: var(--heal-muted); }
+.heal-calc input[type="number"],
+.heal-calc input[type="text"],
+.heal-calc select {
+  width: 100%;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1.5px solid #c9c3ba;
+  border-radius: var(--heal-radius-inner);
+  background: var(--heal-card);
+  font: inherit;
+  font-size: 16px; /* prevents iOS zoom */
+  color: var(--heal-ink);
+  appearance: none;
+}
+.heal-calc input:focus-visible,
+.heal-calc select:focus-visible,
+.heal-calc button:focus-visible {
+  outline: 3px solid var(--heal-focus);
+  outline-offset: 1px;
+  border-color: var(--heal-focus);
+}
+.heal-calc select {
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235b5650' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* ---- Segmented unit toggle ---- */
+.heal-calc .heal-units { display: flex; gap: 6px; margin-bottom: 14px; }
+.heal-calc .heal-units button {
+  flex: 1;
+  min-height: 40px;
+  padding: 7px 0;
+  border: 1px solid var(--heal-line);
+  border-radius: var(--heal-radius-inner);
+  background: var(--heal-page);
+  font: inherit;
+  cursor: pointer;
+}
+.heal-calc .heal-units button[aria-pressed="true"] {
+  background: var(--heal-accent);
+  border-color: var(--heal-accent);
+  color: #ffffff;
+}
+
+/* ---- Result panel base ---- */
+.heal-calc .heal-result {
+  margin-top: 11px;
+  border: 1px solid var(--heal-line);
+  border-radius: 10px;
+  background: var(--heal-page);
+  min-height: 64px;
+  text-align: center;
+}
+
+/* ---- Links & disclaimer ---- */
+.heal-calc a { color: var(--heal-link); font-weight: 600; }
+.heal-calc .heal-disc {
+  margin: 9px 0 0;
+  font-size: .72rem;
+  line-height: 1.4;
+  color: var(--heal-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heal-calc * { transition: none !important; }
+}

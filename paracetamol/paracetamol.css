@@ -1,0 +1,108 @@
+/* HEAL Paracetamol dose calculator - specific styles on top of the shared definition. */
+@import url("../shared/heal.css");
+
+/* ---- Fixed-height layered output (no layout jump) ---- */
+.heal-calc .heal-output { position: relative; height: 126px; margin-top: 11px; }
+.heal-calc .heal-output .heal-layer { position: absolute; inset: 0; transition: opacity .15s ease; }
+.heal-calc .heal-output .heal-layer-empty {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--heal-muted);
+  font-size: .86rem;
+  border: 1.5px dashed var(--heal-line);
+  border-radius: 10px;
+  padding: 12px;
+}
+.heal-calc .heal-output .heal-layer-result { z-index: 2; opacity: 0; visibility: hidden; }
+.heal-calc .heal-output[data-state="result"] .heal-layer-result { opacity: 1; visibility: visible; }
+.heal-calc .heal-output[data-state="result"] .heal-layer-empty { opacity: 0; visibility: hidden; }
+
+.heal-calc .heal-dose {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--heal-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.heal-calc .heal-dose-cap {
+  background: var(--heal-accent-deep);
+  color: #fff;
+  padding: 6px 13px;
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.heal-calc .heal-dose-cols { display: flex; flex: 1; align-items: center; }
+.heal-calc .heal-dose-col { flex: 1; padding: 10px 13px; }
+.heal-calc .heal-dose-col + .heal-dose-col { border-left: 1px solid var(--heal-line); }
+.heal-calc .heal-dose-big { font-size: 1.5rem; font-weight: 800; line-height: 1.05; }
+.heal-calc .heal-dose-big .heal-unit { font-size: .9rem; font-weight: 700; }
+.heal-calc .heal-dose-lbl { font-size: .74rem; color: var(--heal-muted); margin-top: 1px; }
+.heal-calc .heal-dose-warn {
+  background: var(--heal-warn-bg);
+  border-top: 1px solid var(--heal-warn-line);
+  color: var(--heal-warn-ink);
+  font-size: .74rem;
+  font-weight: 600;
+  padding: 6px 13px;
+}
+
+.heal-calc .heal-freq { margin: 11px 0 0; font-size: .82rem; line-height: 1.4; }
+.heal-calc .heal-advice-link {
+  display: inline-block;
+  margin: 8px 0 0;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--heal-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---- Modal ---- */
+.heal-calc dialog.heal-advice {
+  width: min(92%, 360px);
+  max-height: 88vh;
+  overflow: auto;
+  padding: 0;
+  border: 1px solid var(--heal-line);
+  border-radius: var(--heal-radius);
+  box-shadow: 0 12px 40px rgba(20, 17, 15, .28);
+  color: var(--heal-ink);
+  font-family: var(--heal-font);
+}
+.heal-calc dialog.heal-advice::backdrop { background: rgba(20, 17, 15, .5); }
+.heal-calc .heal-m-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--heal-line);
+  position: sticky;
+  top: 0;
+  background: var(--heal-card);
+}
+.heal-calc .heal-m-head h2 { font-size: 1rem; margin: 0; }
+.heal-calc .heal-m-close {
+  min-width: 34px;
+  min-height: 34px;
+  border: 1px solid var(--heal-line);
+  border-radius: 8px;
+  background: var(--heal-card);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--heal-ink);
+}
+.heal-calc .heal-m-body { padding: 13px 15px; }
+.heal-calc .heal-m-body ul { margin: 0; padding-left: 18px; }
+.heal-calc .heal-m-body li { font-size: .85rem; margin: 7px 0; line-height: 1.4; }
