@@ -25,15 +25,15 @@ window.healRenderPHQ9 = function (container) {
 
   function band(score) {
     if (score < 5) return { label: "None–minimal", cls: "heal-band-none",
-      text: "Your result falls into the none or minimal range." };
+      text: "Your score suggests few or no signs of depression at the moment." };
     if (score < 10) return { label: "Mild", cls: "heal-band-mild",
-      text: "Your result falls into the mild range. You may wish to monitor your symptoms or speak to a health professional if you are concerned." };
+      text: "Your score suggests mild symptoms of depression. Keep an eye on how you feel over the next couple of weeks, and talk to your doctor, nurse or a counsellor if you\u2019re worried or things get worse." };
     if (score < 15) return { label: "Moderate", cls: "heal-band-moderate",
-      text: "Your result falls into the moderate range. This means you could be experiencing significant distress. You may wish to see your GP." };
+      text: "Your score suggests moderate symptoms of depression. Feelings like these can make daily life harder — it\u2019s a good idea to book a visit with your GP or usual health provider." };
     if (score < 20) return { label: "Moderately severe", cls: "heal-band-modsevere",
-      text: "Your result falls into the moderately severe range. This means you are probably experiencing significant distress. We strongly recommend you see your GP, and consider calling one of the supports below right now." };
+      text: "Your score suggests moderately severe symptoms of depression. Please book a visit with your GP or usual health provider soon — and if you need to talk to someone now, the free helplines below are ready to listen." };
     return { label: "Severe", cls: "heal-band-severe",
-      text: "Your result falls into the severe range. This means you are probably experiencing significant distress. We strongly recommend you see your GP, and consider calling one of the supports below right now." };
+      text: "Your score suggests severe symptoms of depression. Please see your GP or usual health provider as soon as you can. If you need support right now, call or text one of the free helplines below — they\u2019re there for you, day or night." };
   }
 
   container.innerHTML =
@@ -55,15 +55,15 @@ window.healRenderPHQ9 = function (container) {
 
       '<div class="heal-support">' +
         '<strong>Get support</strong>' +
-        'If you would like to talk to someone, try one of these free helplines as a first step, or contact your doctor.' +
+        'Need to talk? These free services are a good place to start, or you can contact your GP.' +
         '<ul>' +
-          '<li><a href="tel:1737">1737</a> — call or text, 24/7, trained counsellor</li>' +
+          '<li><a href="tel:1737">1737</a> — call or text any time, day or night, to reach a trained counsellor</li>' +
           '<li>Depression Helpline — <a href="tel:0800111757">0800 111 757</a></li>' +
           '<li>Lifeline — <a href="tel:0800543354">0800 543 354</a></li>' +
           '<li>Samaritans — <a href="tel:0800726666">0800 726 666</a></li>' +
           '<li>Youthline — <a href="tel:0800376633">0800 376 633</a></li>' +
         '</ul>' +
-        'For mental health emergencies, contact your local crisis team or call <a href="tel:111">111</a>.' +
+        'In a mental health emergency, call <a href="tel:111">111</a> or contact your local crisis assessment team.' +
       '</div>' +
 
       '<p class="heal-disc">Your answers stay on this page — nothing is recorded or sent. ' +
@@ -149,9 +149,9 @@ window.healRenderPHQ9 = function (container) {
         "</div>" +
       "</div>" +
       '<p class="heal-explain">' + b.text + "</p>" +
-      '<p class="heal-explain">You find it ' + FUNCTION_WORDS[answers[9]] + " to complete general life tasks (not included in your score).</p>" +
+      '<p class="heal-explain">You also said these problems make daily life ' + FUNCTION_WORDS[answers[9]] + " for you. That doesn\u2019t change your score, but it\u2019s worth mentioning to your health professional.</p>" +
       (selfHarm
-        ? '<p class="heal-alert">You indicated thoughts of hurting yourself. Please speak to a trusted friend or family member, or call one of the numbers below, immediately. If you are in immediate danger, call <a href="tel:111">111</a>.</p>'
+        ? '<p class="heal-alert">Your answers suggest you\u2019re having thoughts of hurting yourself. You don\u2019t have to face this alone — reach out to someone you trust, or call or text one of the helplines below now. If you or someone else is in immediate danger, call <a href="tel:111">111</a>.</p>'
         : "");
     setProgress("Complete", 1);
     backBtn.hidden = false;
