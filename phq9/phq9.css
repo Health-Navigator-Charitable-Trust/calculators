@@ -1,0 +1,72 @@
+/* HEAL PHQ-9 questionnaire - specific styles on top of the shared definition. */
+@import url("../shared/heal.css");
+
+.heal-calc { max-width: 520px; }
+
+/* ---- Questions ---- */
+.heal-calc .heal-q {
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--heal-line);
+  border-radius: var(--heal-radius-inner);
+}
+.heal-calc .heal-q legend {
+  padding: 0;
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.heal-calc .heal-q .heal-opts { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
+.heal-calc .heal-q .heal-opts label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.heal-calc .heal-q .heal-opts label:hover { background: var(--heal-page); }
+.heal-calc .heal-q input[type="radio"] { accent-color: var(--heal-accent); width: 16px; height: 16px; margin: 0; }
+.heal-calc .heal-q--missing { border-color: var(--heal-warn-line); background: var(--heal-warn-bg); }
+
+.heal-calc .heal-error {
+  margin: 9px 0 0;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--heal-warn-ink);
+}
+
+/* ---- Result ---- */
+.heal-calc .heal-band-none { color: #1e8e3e; }
+.heal-calc .heal-band-mild { color: #7a9e01; }
+.heal-calc .heal-band-moderate { color: #e8710a; }
+.heal-calc .heal-band-modsevere { color: #d9480f; }
+.heal-calc .heal-band-severe { color: #d93025; }
+
+.heal-calc .heal-explain { margin: 11px 0 0; font-size: .84rem; line-height: 1.45; }
+
+.heal-calc .heal-alert {
+  margin: 11px 0 0;
+  padding: 10px 13px;
+  border: 1px solid var(--heal-warn-line);
+  border-radius: var(--heal-radius-inner);
+  background: var(--heal-warn-bg);
+  color: var(--heal-warn-ink);
+  font-size: .84rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.heal-calc .heal-support {
+  margin: 11px 0 0;
+  padding: 10px 13px;
+  border: 1px solid var(--heal-line);
+  border-radius: var(--heal-radius-inner);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+.heal-calc .heal-support strong { display: block; margin-bottom: 4px; }
+.heal-calc .heal-support ul { margin: 0; padding-left: 18px; }

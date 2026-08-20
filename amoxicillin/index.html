@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL Amoxicillin Dose Calculator</title>
+  <meta name="description" content="Weight-based amoxicillin dose calculator for children, based on the New Zealand Formulary.">
+  <link rel="stylesheet" href="amoxicillin.css">
+</head>
+<body>
+  <main id="heal-root" aria-label="Amoxicillin dose calculator"></main>
+
+  <script src="../allowed-domains.js"></script>
+  <script src="../shared/embed-guard.js"></script>
+  <script src="amoxicillin.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("heal-root");
+      var verdict = window.healEmbedGuard.checkIframe();
+      if (verdict.allowed) {
+        window.healRenderAmoxicillin(root);
+      } else {
+        root.innerHTML =
+          '<p style="font-family:system-ui,sans-serif;color:#888;padding:12px;">' +
+          "This calculator is not available on this site.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

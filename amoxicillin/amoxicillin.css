@@ -1,0 +1,5 @@
+/* HEAL Amoxicillin dose calculator - specific styles on top of the shared definition. */
+@import url("../shared/heal.css");
+
+/* Extra strip (frequency, optional max-dose warning) needs more room than the default. */
+.heal-calc .heal-output { height: 158px; }

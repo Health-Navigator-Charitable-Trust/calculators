@@ -138,6 +138,88 @@
   text-align: center;
 }
 
+/* ---- Buttons ---- */
+.heal-calc .heal-btn {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 11px;
+  padding: 10px;
+  border: 0;
+  border-radius: var(--heal-radius-inner);
+  background: var(--heal-accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.heal-calc .heal-btn:hover { background: var(--heal-accent-deep); }
+.heal-calc .heal-btn--secondary {
+  background: var(--heal-page);
+  color: var(--heal-ink);
+  border: 1px solid var(--heal-line);
+}
+.heal-calc .heal-btn--secondary:hover { background: var(--heal-line); }
+
+/* ---- Layered fixed-height output (no layout jump) ---- */
+.heal-calc .heal-output { position: relative; height: 126px; margin-top: 11px; }
+.heal-calc .heal-output .heal-layer { position: absolute; inset: 0; transition: opacity .15s ease; }
+.heal-calc .heal-output .heal-layer-empty {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--heal-muted);
+  font-size: .86rem;
+  border: 1.5px dashed var(--heal-line);
+  border-radius: 10px;
+  padding: 12px;
+}
+.heal-calc .heal-output .heal-layer-result { z-index: 2; opacity: 0; visibility: hidden; }
+.heal-calc .heal-output[data-state="result"] .heal-layer-result { opacity: 1; visibility: visible; }
+.heal-calc .heal-output[data-state="result"] .heal-layer-empty { opacity: 0; visibility: hidden; }
+
+/* ---- Dose result card ---- */
+.heal-calc .heal-dose {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--heal-line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.heal-calc .heal-dose-cap {
+  background: var(--heal-accent-deep);
+  color: #fff;
+  padding: 6px 13px;
+  font-size: .68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.heal-calc .heal-dose-cols { display: flex; flex: 1; align-items: center; }
+.heal-calc .heal-dose-col { flex: 1; padding: 10px 13px; }
+.heal-calc .heal-dose-col + .heal-dose-col { border-left: 1px solid var(--heal-line); }
+.heal-calc .heal-dose-big { font-size: 1.5rem; font-weight: 800; line-height: 1.05; }
+.heal-calc .heal-dose-big .heal-unit { font-size: .9rem; font-weight: 700; }
+.heal-calc .heal-dose-lbl { font-size: .74rem; color: var(--heal-muted); margin-top: 1px; }
+.heal-calc .heal-dose-freq {
+  padding: 6px 13px;
+  border-top: 1px solid var(--heal-line);
+  font-size: .74rem;
+  font-weight: 600;
+  color: var(--heal-muted);
+}
+.heal-calc .heal-dose-warn {
+  background: var(--heal-warn-bg);
+  border-top: 1px solid var(--heal-warn-line);
+  color: var(--heal-warn-ink);
+  font-size: .74rem;
+  font-weight: 600;
+  padding: 6px 13px;
+}
+
 /* ---- Footer ("Brought to you by ...") ---- */
 .heal-calc .heal-footer {
   margin: 12px 0 0;
