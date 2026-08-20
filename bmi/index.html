@@ -11,11 +11,13 @@
 
   <script src="../allowed-domains.js"></script>
   <script src="../shared/embed-guard.js"></script>
+  <script src="../shared/analytics.js"></script>
   <script src="bmi.js"></script>
   <script>
     (function () {
       var root = document.getElementById("heal-root");
       var verdict = window.healEmbedGuard.checkIframe();
+      window.healAnalytics.init("bmi", !verdict.allowed);
       if (verdict.allowed) {
         window.healRenderBMI(root);
       } else {

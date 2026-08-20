@@ -47,6 +47,7 @@
 
     Promise.all([
       loadScript(new URL("allowed-domains.js", base).href),
+      loadScript(new URL("shared/analytics.js", base).href),
       loadScript(new URL("amoxicillin/amoxicillin.js", base).href),
     ])
       .then(function () {
@@ -54,6 +55,7 @@
       })
       .then(function () {
         var verdict = window.healEmbedGuard.checkScript();
+        window.healAnalytics.init("amoxicillin", !verdict.allowed);
         targets.forEach(function (target) {
           if (verdict.allowed) {
             mount(target);

@@ -86,13 +86,30 @@
   </ul>
   <p class="note"><strong>Limitation:</strong> GitHub Pages is static hosting, so this check runs in the visitor's browser. It reliably blocks unwanted embedding of the hosted files, but it cannot stop someone from copying the files and re-hosting them without the check.</p>
 
+  <h2>Usage statistics</h2>
+  <p>Each calculator anonymously counts how often it is loaded and on which domain, using <a href="https://www.goatcounter.com">GoatCounter</a> (EU-hosted, open source, no cookies, no personal data). Blocked embed attempts are counted separately under <code>/blocked/…</code>. Nothing the user enters is ever sent anywhere.</p>
+
   <h2>Demos</h2>
-  <p>
-    <a href="bmi/">BMI calculator</a> ·
-    <a href="paracetamol/">Paracetamol dose calculator</a> ·
-    <a href="amoxicillin/">Amoxicillin dose calculator</a> ·
-    <a href="phq9/">PHQ-9 depression screening</a> ·
-    <a href="pregnancy/">Pregnancy calculator</a>
-  </p>
+  <p>Embedded below using the exact script-tag method from option 2 (standalone iframe versions: <a href="bmi/">bmi</a> · <a href="paracetamol/">paracetamol</a> · <a href="amoxicillin/">amoxicillin</a> · <a href="phq9/">phq9</a> · <a href="pregnancy/">pregnancy</a>).</p>
+
+  <h3>BMI</h3>
+  <div data-heal-calculator="bmi"></div>
+  <script src="bmi/embed.js"></script>
+
+  <h3>Paracetamol dose (children)</h3>
+  <div data-heal-calculator="paracetamol"></div>
+  <script src="paracetamol/embed.js"></script>
+
+  <h3>Amoxicillin dose (children)</h3>
+  <div data-heal-calculator="amoxicillin"></div>
+  <script src="amoxicillin/embed.js"></script>
+
+  <h3>PHQ-9 depression screening</h3>
+  <div data-heal-calculator="phq9"></div>
+  <script src="phq9/embed.js"></script>
+
+  <h3>Pregnancy</h3>
+  <div data-heal-calculator="pregnancy"></div>
+  <script src="pregnancy/embed.js"></script>
 </body>
 </html>

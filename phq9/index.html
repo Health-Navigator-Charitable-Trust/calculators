@@ -12,11 +12,13 @@
 
   <script src="../allowed-domains.js"></script>
   <script src="../shared/embed-guard.js"></script>
+  <script src="../shared/analytics.js"></script>
   <script src="phq9.js"></script>
   <script>
     (function () {
       var root = document.getElementById("heal-root");
       var verdict = window.healEmbedGuard.checkIframe();
+      window.healAnalytics.init("phq9", !verdict.allowed);
       if (verdict.allowed) {
         window.healRenderPHQ9(root);
       } else {

@@ -12,11 +12,13 @@
 
   <script src="../allowed-domains.js"></script>
   <script src="../shared/embed-guard.js"></script>
+  <script src="../shared/analytics.js"></script>
   <script src="paracetamol.js"></script>
   <script>
     (function () {
       var root = document.getElementById("heal-root");
       var verdict = window.healEmbedGuard.checkIframe();
+      window.healAnalytics.init("paracetamol", !verdict.allowed);
       if (verdict.allowed) {
         window.healRenderParacetamol(root);
       } else {

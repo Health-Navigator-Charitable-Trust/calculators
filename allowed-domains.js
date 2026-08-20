@@ -9,6 +9,7 @@
 window.HEAL_ALLOWED_DOMAINS = [
   "localhost",
   "127.0.0.1",
+  "health-navigator-charitable-trust.github.io",
   "*.healthify.nz",
   "healthify.nz",
   // "example.com",
