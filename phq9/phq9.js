@@ -117,7 +117,9 @@ window.healRenderPHQ9 = function (container) {
     answers[current] = value;
     var opts = bodyEl.querySelectorAll(".heal-opt");
     for (var b = 0; b < opts.length; b++) {
-      opts[b].setAttribute("aria-pressed", String(parseInt(opts[b].getAttribute("data-value"), 10) === value));
+      var isPicked = parseInt(opts[b].getAttribute("data-value"), 10) === value;
+      opts[b].setAttribute("aria-pressed", String(isPicked));
+      opts[b].classList.toggle("heal-opt--picked", isPicked);
     }
     setProgress("Question " + (current + 1) + " of " + TOTAL, answeredCount() / TOTAL);
     if (timer) clearTimeout(timer);

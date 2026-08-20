@@ -42,10 +42,23 @@
   cursor: pointer;
 }
 .heal-calc .heal-opt:hover { border-color: var(--heal-accent); }
+.heal-calc .heal-opt:active { transform: scale(.98); }
 .heal-calc .heal-opt[aria-pressed="true"] {
   border-color: var(--heal-accent);
   background: #fdf0e5;
   font-weight: 600;
+}
+
+/* Click feedback pulse (runs during the 300ms auto-advance delay) */
+@keyframes heal-pick {
+  0% { transform: scale(1); }
+  40% { transform: scale(.96); }
+  100% { transform: scale(1); }
+}
+.heal-calc .heal-opt--picked { animation: heal-pick .28s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .heal-calc .heal-opt--picked { animation: none; }
+  .heal-calc .heal-opt:active { transform: none; }
 }
 
 /* ---- Wizard nav ---- */
