@@ -1,0 +1,5 @@
+/* HEAL paediatric dose engine styles - shared by all weight-based drug calculators. */
+@import url("heal.css");
+
+/* Freq strip (+ optional max-dose warning) needs more room than the default. */
+.heal-calc .heal-output { height: 158px; }

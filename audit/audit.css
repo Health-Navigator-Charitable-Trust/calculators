@@ -1,0 +1,4 @@
+/* HEAL AUDIT questionnaire (wizard) - specific styles on top of the shared definition. */
+@import url("../shared/heal.css");
+
+.heal-calc { max-width: 520px; }

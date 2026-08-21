@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL Ibuprofen Dose Calculator</title>
+  <meta name="description" content="Weight-based paediatric dose calculator, based on the New Zealand Formulary.">
+  <link rel="stylesheet" href="../shared/paediatric-dose.css">
+</head>
+<body>
+  <main id="heal-root" aria-label="Ibuprofen Dose Calculator"></main>
+
+  <script src="../allowed-domains.js"></script>
+  <script src="../shared/embed-guard.js"></script>
+  <script src="../shared/analytics.js"></script>
+  <script src="../shared/paediatric-dose.js"></script>
+  <script src="ibuprofen.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("heal-root");
+      var verdict = window.healEmbedGuard.checkIframe();
+      window.healAnalytics.init("ibuprofen", !verdict.allowed);
+      if (verdict.allowed) {
+        window.healRenderPaedDose(root, window.HEAL_PAED_CONFIG);
+      } else {
+        root.innerHTML =
+          '<p style="font-family:system-ui,sans-serif;color:#888;padding:12px;">' +
+          "This calculator is not available on this site.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HEAL AUDIT Alcohol Screening</title>
+  <meta name="description" content="AUDIT alcohol use screening questionnaire (WHO).">
+  <link rel="stylesheet" href="audit.css">
+</head>
+<body>
+  <main id="heal-root" aria-label="AUDIT alcohol screening questionnaire"></main>
+
+  <script src="../allowed-domains.js"></script>
+  <script src="../shared/embed-guard.js"></script>
+  <script src="../shared/analytics.js"></script>
+  <script src="audit.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("heal-root");
+      var verdict = window.healEmbedGuard.checkIframe();
+      window.healAnalytics.init("audit", !verdict.allowed);
+      if (verdict.allowed) {
+        window.healRenderAUDIT(root);
+      } else {
+        root.innerHTML =
+          '<p style="font-family:system-ui,sans-serif;color:#888;padding:12px;">' +
+          "This questionnaire is not available on this site.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>

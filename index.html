@@ -53,6 +53,14 @@
     <tr><td>Amoxicillin dose (children)</td><td><code>amoxicillin/</code></td></tr>
     <tr><td>PHQ-9 depression screening</td><td><code>phq9/</code></td></tr>
     <tr><td>Pregnancy (due date)</td><td><code>pregnancy/</code></td></tr>
+    <tr><td>AUDIT alcohol screening</td><td><code>audit/</code></td></tr>
+    <tr><td>Co-amoxiclav dose (children)</td><td><code>co-amoxiclav/</code></td></tr>
+    <tr><td>Cefaclor dose (children)</td><td><code>cefaclor/</code></td></tr>
+    <tr><td>Cefalexin dose (children)</td><td><code>cefalexin/</code></td></tr>
+    <tr><td>Co-trimoxazole dose (children)</td><td><code>co-trimoxazole/</code></td></tr>
+    <tr><td>Erythromycin dose (children)</td><td><code>erythromycin/</code></td></tr>
+    <tr><td>Flucloxacillin dose (children)</td><td><code>flucloxacillin/</code></td></tr>
+    <tr><td>Ibuprofen dose (children)</td><td><code>ibuprofen/</code></td></tr>
   </table>
   <p>All calculators share one style definition (<code>shared/heal.css</code>) and the brand watermark (<code>shared/logo.svg</code>), so they look consistent on every site.</p>
 
@@ -73,24 +81,17 @@
 &lt;script src="https://&lt;user&gt;.github.io/&lt;repo&gt;/bmi/embed.js"&gt;&lt;/script&gt;</pre>
   <p>Place the <code>&lt;div&gt;</code> where the calculator should appear. The script can go anywhere in the page; it waits for the DOM to be ready.</p>
 
-  <h2>Controlling which sites may embed</h2>
-  <p>All calculators share one allowlist: <code>allowed-domains.js</code> at the root of this repository. Edit it once and it applies to every calculator and both embed methods.</p>
-  <pre>window.HEAL_ALLOWED_DOMAINS = [
-  "example.com",       // exact domain
-  "*.example.org",     // example.org + all subdomains
-];</pre>
-  <ul>
-    <li>Not on the list &rarr; the calculator shows "not available on this site" instead.</li>
-    <li>Opening the calculator URL directly (not embedded) always works.</li>
-    <li><code>localhost</code> is on the list by default for local testing.</li>
-  </ul>
-  <p class="note"><strong>Limitation:</strong> GitHub Pages is static hosting, so this check runs in the visitor's browser. It reliably blocks unwanted embedding of the hosted files, but it cannot stop someone from copying the files and re-hosting them without the check.</p>
+  <h2>Who can use these calculators</h2>
+  <p><strong>Everyone is welcome to use them, free of charge.</strong> Health Navigator Charitable Trust exists to spread trustworthy health information — the more places these tools appear, the better they serve that purpose.</p>
+  <p>One ask: <strong>let us know where you use them</strong>. Knowing where our material is used matters to us — it shows the reach of what we make. Get in touch via healthify.nz and we will add your domain to the allowlist.</p>
+  <p>Embedding works once your domain is on the allowlist (<code>allowed-domains.js</code>). Until then the calculator shows "not available on this site". Opening a calculator URL directly (not embedded) always works.</p>
+  <p class="note"><strong>Limitation:</strong> GitHub Pages is static hosting, so this check runs in the visitor's browser. It reliably blocks embedding of the hosted files on unlisted domains, but it cannot stop someone from copying the files and re-hosting them without the check.</p>
 
   <h2>Usage statistics</h2>
   <p>Each calculator anonymously counts how often it is loaded and on which domain, using <a href="https://www.goatcounter.com">GoatCounter</a> (EU-hosted, open source, no cookies, no personal data). Blocked embed attempts are counted separately under <code>/blocked/…</code>. Nothing the user enters is ever sent anywhere.</p>
 
   <h2>Demos</h2>
-  <p>Embedded below using the exact script-tag method from option 2 (standalone iframe versions: <a href="bmi/">bmi</a> · <a href="paracetamol/">paracetamol</a> · <a href="amoxicillin/">amoxicillin</a> · <a href="phq9/">phq9</a> · <a href="pregnancy/">pregnancy</a>).</p>
+  <p>Embedded below using the exact script-tag method from option 2 (standalone iframe versions: <a href="bmi/">bmi</a> · <a href="paracetamol/">paracetamol</a> · <a href="amoxicillin/">amoxicillin</a> · <a href="phq9/">phq9</a> · <a href="pregnancy/">pregnancy</a> · <a href="audit/">audit</a> · <a href="co-amoxiclav/">co-amoxiclav</a> · <a href="cefaclor/">cefaclor</a> · <a href="cefalexin/">cefalexin</a> · <a href="co-trimoxazole/">co-trimoxazole</a> · <a href="erythromycin/">erythromycin</a> · <a href="flucloxacillin/">flucloxacillin</a> · <a href="ibuprofen/">ibuprofen</a>).</p>
 
   <h3>BMI</h3>
   <div data-heal-calculator="bmi"></div>
@@ -111,5 +112,37 @@
   <h3>Pregnancy</h3>
   <div data-heal-calculator="pregnancy"></div>
   <script src="pregnancy/embed.js"></script>
+
+  <h3>AUDIT alcohol screening</h3>
+  <div data-heal-calculator="audit"></div>
+  <script src="audit/embed.js"></script>
+
+  <h3>Co-amoxiclav dose (children)</h3>
+  <div data-heal-calculator="co-amoxiclav"></div>
+  <script src="co-amoxiclav/embed.js"></script>
+
+  <h3>Cefaclor dose (children)</h3>
+  <div data-heal-calculator="cefaclor"></div>
+  <script src="cefaclor/embed.js"></script>
+
+  <h3>Cefalexin dose (children)</h3>
+  <div data-heal-calculator="cefalexin"></div>
+  <script src="cefalexin/embed.js"></script>
+
+  <h3>Co-trimoxazole dose (children)</h3>
+  <div data-heal-calculator="co-trimoxazole"></div>
+  <script src="co-trimoxazole/embed.js"></script>
+
+  <h3>Erythromycin dose (children)</h3>
+  <div data-heal-calculator="erythromycin"></div>
+  <script src="erythromycin/embed.js"></script>
+
+  <h3>Flucloxacillin dose (children)</h3>
+  <div data-heal-calculator="flucloxacillin"></div>
+  <script src="flucloxacillin/embed.js"></script>
+
+  <h3>Ibuprofen dose (children)</h3>
+  <div data-heal-calculator="ibuprofen"></div>
+  <script src="ibuprofen/embed.js"></script>
 </body>
 </html>
